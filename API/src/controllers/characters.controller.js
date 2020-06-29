@@ -2,7 +2,7 @@ import Character from "../models/character";
 
 class CharacterController{
 
-    //Liste Characters
+    //Liste Characters -- OK
     static async list(request,response){
        
         let status=200;
@@ -19,11 +19,11 @@ class CharacterController{
         return response.status(status).json(body);
 
     }
-    // creation Characters
+    // creation Characters -- OK
     static async create(request,response){
         let status=200;
         let body={};
-
+        
         try {
             let character=await Character.create({
                 birthday:request.body.birthday,
@@ -46,13 +46,13 @@ class CharacterController{
         return response.status(status).json(body);
     }
 
-    //details characters 
-    static async details ( request,response){
+    //details characters -- OK
+    static async details (request,response){
         let status=200;
         let body={};
         try {
             let id=request.params.id;
-            let character= await character.findById(id);
+            let character= await Character.findById(id);
             body={character,'message': 'un personnage'}
 
         } catch (error) {
@@ -62,13 +62,13 @@ class CharacterController{
         return response.status(status).json(body);
     }
 
-    // delete character
-    static async delete ( request, response){
+    // delete character -- OK
+    static async delete (request, response){
         let status=200; 
         let body={};
         try{
             let id= request.params.id; 
-            await character.deleteOne({_id: id});
+            await Character.deleteOne({_id: id});
             body={'message':'personnage Supprimé'};
 
         }
@@ -86,9 +86,9 @@ class CharacterController{
         let body={};
         try{
             let id= request.params.id; 
-            let character = await character.findById(id);
+            let character = await Character.findById(id);
             await character.update(request.body);
-            body={character, 'message':'un personnage modifié'};
+            body={'message':'un personnage modifié'};
 
         }
         catch(error){

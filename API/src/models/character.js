@@ -4,9 +4,11 @@ import {Schema,model} from 'mongoose';
 const characterSchema = new Schema({
     birthday: {
         type: Date,
+        required: true,
     },
-    firstnam: {
+    firstname: {
         type: String,
+        required: true,
     },
     lastname:{
         type: String,
