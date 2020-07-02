@@ -26,3 +26,6 @@ router.put('/users/:id', UserController.update);
 //authentification
 router.post('/auth', UserController.authentification);
 export default router;
+
+
+// jwt pour proteger avec un token 

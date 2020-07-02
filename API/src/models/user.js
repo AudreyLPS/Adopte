@@ -19,9 +19,7 @@ const userSchema = new Schema({
     mdp:{
         type: String,
         required:true,
-    },
-    favoris:[]
-
+    }
 });
 
 const User= model('User',userSchema);

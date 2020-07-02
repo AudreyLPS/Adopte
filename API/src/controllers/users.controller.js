@@ -31,8 +31,7 @@ class UserController{
                 role: request.body.role,
                 email:request.body.email,
                 ddn:request.body.ddn,
-                mdp:request.body.mdp,
-                favoris:request.body.favoris
+                mdp:request.body.mdp
 
             });
             body={user,'message':'User plus okay'}
@@ -88,7 +87,7 @@ class UserController{
             await user.update(request.body);
             body={user, 'message':'un user'};
 
-        }
+        } 
         catch(error){
             status=500;
             body={'message': error.message}
@@ -102,9 +101,17 @@ class UserController{
         let body={};
         try{
             let user = await User.findOne({email: request.body.email});
-            let mdp= request.body.mdp; 
-            if( mdp===user.mdp){
-                body={user, 'message':'user connecté'};
+            if (user){
+                let mdp= request.body.password;
+                if( mdp==user.mdp){
+                    body={user, 'message':'user connecté'};
+                }
+                else{
+                    body={ 'message':'pwd incor'};
+                }
+            }
+            else{
+                body={'message':'user introuvable'};
             }
         }
         catch(error){
