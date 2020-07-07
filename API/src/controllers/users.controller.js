@@ -30,7 +30,7 @@ class UserController{
                 pseudo:request.body.pseudo,
                 role: request.body.role,
                 email:request.body.email,
-                ddn:request.body.ddn,
+                favoris:request.body.favoris,
                 mdp:request.body.mdp
 
             });
