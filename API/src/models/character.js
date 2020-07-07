@@ -3,7 +3,7 @@ import {Schema,model} from 'mongoose';
 
 const characterSchema = new Schema({
     birthday: {
-        type: Date,
+        type: String,
         required: true,
     },
     firstname: {
@@ -27,8 +27,8 @@ const characterSchema = new Schema({
     },
     likedBehavior:[], 
     dislikedBehavior:[], 
-    acceptedCatch:[], 
-    refusedCatch:[], 
+    acceptedCatch:String, 
+    refusedCatch:String, 
 
 });
 
