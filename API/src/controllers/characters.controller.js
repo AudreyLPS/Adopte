@@ -4,13 +4,39 @@ class CharacterController{
 
     //Liste Characters -- OK
     static async list(request,response){
-       
         let status=200;
         let body={};
 
         try {
             let characters = await Character.find();
             body={characters, 'message':'Liste des personnages'};
+
+        } catch (error) {
+            status=500;
+            body={'message':error.message};
+        }
+        return response.status(status).json(body);
+
+    }
+
+     static async search(request,response){
+        
+        
+        let status=200;
+        let body={};
+        let str= request.params.str; 
+        let chars=[];
+        
+        try {
+            let characters = await Character.find();
+            characters.forEach(character => {
+                let nickname=character.nickname;
+                let n = nickname.search(str);
+                if(n>=0){
+                    chars.push(character);
+                }
+            });
+            body={chars, 'message':'Liste des personnages recherche'};
 
         } catch (error) {
             status=500;

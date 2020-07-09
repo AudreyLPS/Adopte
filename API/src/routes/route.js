@@ -11,6 +11,7 @@ router.get('/hello', (reg,res)=>{
 
 //Characters
 router.get('/characters', CharatersController.list);
+router.get('/characters/:str', CharatersController.search);
 router.post('/characters',CharatersController.create);
 router.get('/characters/:id', CharatersController.details);
 router.delete('/characters/:id', CharatersController.delete);
